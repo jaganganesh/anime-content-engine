@@ -32,3 +32,13 @@ export const MIN_LOGO_BOX_RADIUS = 12;
 
 // Output
 export const JPEG_QUALITY = 0.8;
+
+// Hashtags
+export const CORE_TAGS = ["Anime", "AnimeRecs"];
+export const ROTATION_TAGS = [
+  "AnimeCommunity",
+  "Otaku",
+  "AnimeOfTheDay",
+  "AnimeRecommendation",
+  "MustWatch",
+];

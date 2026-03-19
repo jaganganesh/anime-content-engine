@@ -25,5 +25,4 @@ const getAnimeService = async () => {
     throw error;
   }
 };
-
 export default getAnimeService;

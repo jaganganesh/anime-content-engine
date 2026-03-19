@@ -6,7 +6,7 @@ import {
 import getAnimeService from "./getAnimeService.js";
 import powerNap from "../utils/powerNap.js";
 
-export const isApprovedAnime = (anime) => {
+const isApprovedAnime = (anime) => {
   return Boolean(
     anime &&
     ALLOWED_SHOW_TYPE.includes(anime.type) &&
