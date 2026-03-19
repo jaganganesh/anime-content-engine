@@ -1,4 +1,4 @@
-import fs from "fs";
+import { createWriteStream, promises as fs } from "fs";
 import path from "path";
 import { Readable } from "stream";
 import { finished } from "stream/promises";
@@ -28,8 +28,8 @@ const downloadFile = async (url, filepath) => {
     throw new Error("downloadFile: response body is empty.");
   }
 
-  fs.mkdirSync(path.dirname(filepath), { recursive: true });
-  const fileStream = fs.createWriteStream(filepath);
+  await fs.mkdir(path.dirname(filepath), { recursive: true });
+  const fileStream = createWriteStream(filepath);
   const body = Readable.fromWeb(response.body);
   await finished(body.pipe(fileStream));
 };

@@ -1,6 +1,6 @@
 import { CORE_TAGS, ROTATION_TAGS } from "../config/constant.js";
 
-const generateContentService = async (animeData) => {
+const generateContentService = (animeData) => {
   const title =
     animeData.title.length <= 73
       ? animeData.title
@@ -20,13 +20,15 @@ const generateContentService = async (animeData) => {
     .map((tag) => `#${tag}`)
     .join(" ");
 
-  const postContent = `
-    ${title}
-    ${description}\n
-    Rating: ${rating}
-    Type: ${type}\n
-    ${hashtags}
-    `.trim();
+  const postContent = [
+    title,
+    description,
+    "",
+    `Rating: ${rating}`,
+    `Type: ${type}`,
+    "",
+    hashtags,
+  ].join("\n");
 
   const imageDescription = `Poster for ${title}.\n${animeData.synopsis}`.slice(
     0,

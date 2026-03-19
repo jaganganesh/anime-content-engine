@@ -1,29 +1,12 @@
-import { TEMP_IMAGE_STORAGE, RENDER_IMAGE_STORAGE } from "./config/constant.js";
-import filterAnimeService from "./services/filterAnimeService.js";
-import renderImageService from "./services/renderImageService.js";
-import generateContentService from "./services/generateContentService.js";
-import downloadFile from "./utils/downloadFile.js";
+import generateImage from "./services/generateImageService.js";
 
 const runAutomation = async () => {
   try {
-    // Select Anime
-    const selectedAnime = await filterAnimeService();
-    console.log("runAutomation:", "selectedAnime:", selectedAnime.title);
+    // Generate Image
+    const [postContent, imageDescription] = await generateImage();
 
-    // Download Anime
-    await downloadFile(
-      selectedAnime.images.jpg.large_image_url,
-      TEMP_IMAGE_STORAGE,
-    );
-
-    // Render Image
-    await renderImageService(TEMP_IMAGE_STORAGE, RENDER_IMAGE_STORAGE);
-
-    // Generate Content
-    const [postContent, imageDescription] =
-      await generateContentService(selectedAnime);
     console.log("runAutomation:", "postContent:", postContent);
-    console.log("runAutomation:", "imageDescription:", imageDescription);
+    console.log("runAutomation", "imageDescription:", imageDescription);
   } catch (error) {
     console.error("runAutomation:", "Fetch Error:", error);
     throw error;
