@@ -1,0 +1,32 @@
+{
+  "name": "anime-content-engine",
+  "version": "0.0.1",
+  "description": "Automated anime content engine that generates scroll-stopping posts with images, captions, and hashtags for X and Bluesky.",
+  "keywords": [
+    "anime",
+    "automation",
+    "content-automation",
+    "content-generation",
+    "social-media-bot",
+    "twitter-bot",
+    "bluesky-bot",
+    "image-generation",
+    "nodejs",
+    "github-actions",
+    "web-automation",
+    "bot",
+    "developer-tools",
+    "jikan"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github-personal:jaganganesh/anime-content-engine.git"
+  },
+  "license": "AGPL-3.0-or-later",
+  "author": "Jagan Ganesh",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
