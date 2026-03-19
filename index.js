@@ -1,5 +1,6 @@
-import { TEMP_IMAGE_STORAGE } from "./config/constant.js";
+import { TEMP_IMAGE_STORAGE, RENDER_IMAGE_STORAGE } from "./config/constant.js";
 import filterAnimeService from "./services/filterAnimeService.js";
+import renderImageService from "./services/renderImageService.js";
 import downloadFile from "./utils/downloadFile.js";
 
 const runAutomation = async () => {
@@ -13,6 +14,9 @@ const runAutomation = async () => {
       selectedAnime.images.jpg.large_image_url,
       TEMP_IMAGE_STORAGE,
     );
+
+    // Render Image
+    await renderImageService(TEMP_IMAGE_STORAGE, RENDER_IMAGE_STORAGE);
   } catch (error) {
     console.error("runAutomation:", "Fetch Error:", error);
     throw error;
