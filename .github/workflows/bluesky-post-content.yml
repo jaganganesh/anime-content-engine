@@ -1,0 +1,34 @@
+name: "Bluesky - Post Content"
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v3
+        with:
+          node-version: "24"
+
+      - name: Install Canvas System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
+
+      - name: Setup Directories
+        run: mkdir -p output output/temp
+
+      - name: Install Node Dependencies
+        run: npm ci
+
+      - name: Post Content
+        run: node modules/blueskyPostModule.js
+        env:
+          BSKY_USERNAME: ${{ secrets.BSKY_USERNAME }}
+          BSKY_PASSWORD: ${{ secrets.BSKY_PASSWORD }}

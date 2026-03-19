@@ -42,3 +42,26 @@ export const ROTATION_TAGS = [
   "AnimeRecommendation",
   "MustWatch",
 ];
+
+// Bluesky
+export const BLUESKY_LIKE_LIMIT = 10;
+export const BLUESKY_LIKE_TAGS = [
+  "#Anime",
+  "#AniSky",
+  "#AnimeSky",
+  "#AnimeRecs",
+  "#AnimeRecommendations",
+];
+export const BLUESKY_NSFW_CONTENT = [
+  "porn",
+  "sex",
+  "sexual",
+  "nude",
+  "nudity",
+  "nsfw",
+  "hentai",
+  "censored",
+  "uncensored",
+  "aiart",
+  "adult only",
+];

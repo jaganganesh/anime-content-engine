@@ -64,25 +64,52 @@ const getLogoOverlayLayout = (
   logoOffsetYRatio,
 ) => {
   const shortSide = Math.min(animeImage.width, animeImage.height);
-  const logoHeight = Math.max(
+  const targetLogoHeight = Math.max(
     MIN_LOGO_SIZE,
     Math.floor(shortSide * LOGO_SIZE_RATIO),
   );
+  const maxLogoHeight = Math.max(
+    1,
+    Math.min(
+      animeImage.height - 2,
+      Math.floor((animeImage.width - 2) / logoAspectRatio),
+    ),
+  );
+  const logoHeight = Math.min(targetLogoHeight, maxLogoHeight);
   const logoWidth = Math.max(1, Math.round(logoAspectRatio * logoHeight));
-  const padding = Math.max(
+  const targetPadding = Math.max(
     MIN_LOGO_PADDING,
     Math.floor(shortSide * LOGO_PADDING_RATIO),
   );
+  const maxPadding = Math.max(
+    0,
+    Math.min(
+      Math.floor((animeImage.width - logoWidth) / 2),
+      Math.floor((animeImage.height - logoHeight) / 2),
+    ),
+  );
+  const padding = Math.min(targetPadding, maxPadding);
   const boxRadius = Math.max(
     MIN_LOGO_BOX_RADIUS,
     Math.floor(shortSide * LOGO_BOX_RADIUS_RATIO),
   );
   const boxWidth = logoWidth + padding * 2;
   const boxHeight = logoHeight + padding * 2;
-  const boxX = animeImage.width - boxWidth;
-  const boxY = animeImage.height - boxHeight;
+  const boxX = Math.max(0, animeImage.width - boxWidth);
+  const boxY = Math.max(0, animeImage.height - boxHeight);
   const logoOffsetX = Math.round(logoWidth * logoOffsetXRatio);
   const logoOffsetY = Math.round(logoHeight * logoOffsetYRatio);
+  const logoX = Math.min(
+    Math.max(boxX + Math.round((boxWidth - logoWidth) / 2) + logoOffsetX, boxX),
+    boxX + boxWidth - logoWidth,
+  );
+  const logoY = Math.min(
+    Math.max(
+      boxY + Math.round((boxHeight - logoHeight) / 2) + logoOffsetY,
+      boxY,
+    ),
+    boxY + boxHeight - logoHeight,
+  );
 
   return {
     boxHeight,
@@ -94,8 +121,8 @@ const getLogoOverlayLayout = (
     logoOffsetX,
     logoOffsetY,
     logoWidth,
-    logoX: boxX + Math.round((boxWidth - logoWidth) / 2) + logoOffsetX,
-    logoY: boxY + Math.round((boxHeight - logoHeight) / 2) + logoOffsetY,
+    logoX,
+    logoY,
   };
 };
 
