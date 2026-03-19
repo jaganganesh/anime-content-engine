@@ -1,0 +1,26 @@
+name: "Bluesky - Like Content"
+
+on:
+  schedule:
+    - cron: "0 */1 * * *"
+  workflow_dispatch:
+
+jobs:
+  like:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v3
+        with:
+          node-version: "24"
+
+      - name: Install Node Dependencies
+        run: npm ci
+
+      - name: Like Content
+        run: node modules/blueskyLikeModule.js
+        env:
+          BSKY_USERNAME: ${{ secrets.BSKY_USERNAME }}
+          BSKY_PASSWORD: ${{ secrets.BSKY_PASSWORD }}
