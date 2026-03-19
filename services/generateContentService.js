@@ -2,14 +2,14 @@ import { CORE_TAGS, ROTATION_TAGS } from "../config/constant.js";
 
 const generateContentService = async (animeData) => {
   const title =
-    animeData.title.length < 80
+    animeData.title.length <= 73
       ? animeData.title
-      : animeData.title.slice(0, 77).trim() + "...";
+      : animeData.title.slice(0, 70).trim() + "...";
   const description =
     animeData.synopsis !== ""
-      ? animeData.synopsis.length < 150
+      ? animeData.synopsis.length <= 100
         ? animeData.synopsis
-        : animeData.synopsis.slice(0, 147).trim() + "..."
+        : animeData.synopsis.slice(0, 97).trim() + "..."
       : "No description available.";
   const rating = animeData.rating || "N/A";
   const type = animeData.type || "TV";
