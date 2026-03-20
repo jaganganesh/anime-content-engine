@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@atproto/api": "^0.19.3",
-    "canvas": "^3.2.1"
+    "canvas": "^3.2.1",
+    "twitter-api-v2": "^1.29.0"
   }
 }
