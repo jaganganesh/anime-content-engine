@@ -37,6 +37,7 @@ const blueskyPostModule = async () => {
         ],
       },
     });
+    console.log("blueskyPostModule:", "Post Success");
   } catch (error) {
     console.error("blueskyPostModule:", "Fetch Error:", error);
     throw error;
