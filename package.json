@@ -27,7 +27,7 @@
   "type": "module",
   "scripts": {
     "lint": "eslint --fix --ext .js,.jsx .",
-    "format": "prettier --write \"**/*.{js,yml,yaml}\"",
+    "format": "prettier --write \"**/*.{js,md,yml,yaml}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
