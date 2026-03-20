@@ -11,6 +11,11 @@ An automated **anime content engine** that generates branded **anime social medi
 
 If you are building an **anime bot**, **anime recommendation bot**, **social media automation project**, **Bluesky bot**, **X posting bot**, or **content automation workflow**, this repository is a practical starter project.
 
+Live profiles:
+
+- Bluesky: https://pickmyanime.bsky.social
+- X: https://x.com/pickmyanime
+
 This engine currently:
 
 - Fetches random anime entries from the **Jikan API**
